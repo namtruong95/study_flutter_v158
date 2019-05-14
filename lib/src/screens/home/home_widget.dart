@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:study_flutter_v158/src/screens/contact_tab/contact_page.dart';
 import 'package:study_flutter_v158/src/screens/extend_tab/extend_page.dart';
 import 'package:study_flutter_v158/src/screens/group_tab/group_page.dart';
-import 'package:study_flutter_v158/src/screens/message_tab/message_page.dart';
+import 'package:study_flutter_v158/src/screens/message_tab/message_tab.dart';
 import 'package:study_flutter_v158/src/screens/timeline_tab/timeline_page.dart';
 import 'package:study_flutter_v158/src/shared/widgets/app_bar/app_bar.dart';
 
@@ -17,7 +17,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   int _selectedIndex = 0;
 
   static List<Widget> _widgetsContent = <Widget>[
-    MessagePage(),
+    MessageTab(),
     ContactPage(),
     GroupPage(),
     TimelinePage(),
