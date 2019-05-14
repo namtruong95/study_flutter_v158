@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_flutter_v158/src/screens/home/home_widget.dart';
+import 'package:study_flutter_v158/src/screens/notification/notification_page.dart';
 
 import 'components/auth/auth.dart';
 import 'screens/login/login_page.dart';
@@ -60,6 +61,7 @@ class _AppState extends State<App> {
             return this._buildState(state);
           },
         ),
+        routes: {'/notification': (context) => NotificationPage()},
       ),
     );
   }

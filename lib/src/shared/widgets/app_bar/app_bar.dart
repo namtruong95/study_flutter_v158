@@ -32,7 +32,7 @@ class LayoutAppBar extends StatelessWidget {
         IconButton(
           icon: Icon(Icons.notifications),
           onPressed: () {
-            print('notification');
+            Navigator.pushNamed(context, '/notification');
           },
         ),
         PopupMenuButton(
