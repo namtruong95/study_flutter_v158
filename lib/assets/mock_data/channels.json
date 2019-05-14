@@ -1,124 +1,64 @@
 {
   "data": [
     {
+      "id": 1,
       "name": "channel 1",
       "image_path": "img1.jpg"
     },
     {
+      "id": 2,
       "name": "channel 2",
       "image_path": "img2.jpg"
     },
     {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
+      "id": 3,
+      "name": "channel 3",
+      "image_path": "img3.jpg"
     },
     {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
+      "id": 4,
+      "name": "channel 4",
+      "image_path": "img4.jpg"
     },
     {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
+      "id": 5,
+      "name": "channel 5",
+      "image_path": "img5.jpg"
     },
     {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
+      "id": 6,
+      "name": "channel 6",
+      "image_path": "img6.jpg"
     },
     {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
+      "id": 7,
+      "name": "channel 7",
+      "image_path": "img7.jpg"
     },
     {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
+      "id": 8,
+      "name": "channel 8",
+      "image_path": "img8.jpg"
     },
     {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
+      "id": 9,
+      "name": "channel 9",
+      "image_path": "img9.jpg"
     },
     {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
+      "id": 10,
+      "name": "channel 10",
+      "image_path": "img10.jpg"
     },
     {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
+      "id": 11,
+      "name": "channel 11",
+      "image_path": "img11.jpg"
     },
     {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
-    },
-    {
-      "name": "channel 2",
-      "image_path": "img2.jpg"
+      "id": 12,
+      "name": "channel 12",
+      "image_path": "img12.jpg"
     }
   ]
 }

@@ -4,11 +4,10 @@ import 'package:study_flutter_v158/src/screens/message_tab/message/channel_detai
 
 class ChannelItem extends StatelessWidget {
   final ChannelModel channel;
-  final int index;
 
-  const ChannelItem({@required this.channel, this.index})
-      : assert(channel != null),
-        assert(index != null);
+  const ChannelItem({
+    @required this.channel,
+  }) : assert(channel != null);
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -20,7 +19,7 @@ class ChannelItem extends StatelessWidget {
       },
       leading: CircleAvatar(
         child: Text(
-          this.index.toString(),
+          this.channel.id.toString(),
         ),
       ),
       title: Text(this.channel.name),

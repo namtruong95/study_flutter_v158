@@ -54,7 +54,9 @@ class _ChannelListState extends State<ChannelList> {
         itemBuilder: (BuildContext context, int index) {
           return index >= state.channels.length
               ? BottomLoader()
-              : ChannelItem(channel: state.channels[index], index: index);
+              : ChannelItem(
+                  channel: state.channels[index],
+                );
         },
         itemCount: state.hasReachedMax
             ? state.channels.length
