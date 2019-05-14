@@ -19,7 +19,7 @@ class _MessageListState extends State<MessageList> {
   final _scrollController = ScrollController();
   final _scrollThreshold = 200.0;
 
-  MessageBloc _messageBloc;
+  dynamic _messageBloc;
 
   _MessageListState() {
     this._scrollController.addListener(_onScroll);
@@ -27,15 +27,7 @@ class _MessageListState extends State<MessageList> {
 
   @override
   void initState() {
-    this._messageBloc = MessageBloc(channel: this.widget.channel);
-    this._messageBloc.dispatch(FetchMessage());
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    this._messageBloc.dispose();
-    super.dispose();
   }
 
   Widget _buildState(MessageState state) {
@@ -57,21 +49,24 @@ class _MessageListState extends State<MessageList> {
           child: Text('no message'),
         );
       }
-      return ListView.builder(
-        itemBuilder: (BuildContext context, int index) {
-          return index >= state.messages.length
-              ? BottomLoader()
-              : state.messages[index].isCurrentUser
-                  ? MyMessage(
-                      message: state.messages[index],
-                    )
-                  : OtherMessage(message: state.messages[index]);
-        },
-        itemCount: state.hasReachedMax
-            ? state.messages.length
-            : state.messages.length + 1,
-        controller: _scrollController,
-        reverse: true,
+
+      return Container(
+        child: ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return index >= state.messages.length
+                ? BottomLoader()
+                : state.messages[index].isCurrentUser
+                    ? MyMessage(
+                        message: state.messages[index],
+                      )
+                    : OtherMessage(message: state.messages[index]);
+          },
+          itemCount: state.hasReachedMax
+              ? state.messages.length
+              : state.messages.length + 1,
+          controller: _scrollController,
+          reverse: true,
+        ),
       );
     }
 
@@ -88,11 +83,8 @@ class _MessageListState extends State<MessageList> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
-      bloc: this._messageBloc,
-      builder: (BuildContext context, MessageState state) {
-        return this._buildState(state);
-      },
-    );
+    this._messageBloc = BlocProvider.of(context);
+
+    return this._buildState((_messageBloc as MessageBloc).currentState);
   }
 }

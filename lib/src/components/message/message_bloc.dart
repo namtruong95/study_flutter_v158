@@ -40,6 +40,14 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
         yield MessageError();
       }
     }
+
+    if (event is AddMessage) {
+      if (currentState is MessageLoaded) {
+        yield (currentState as MessageLoaded)
+            .addMessage(message: event.message);
+      }
+      return;
+    }
   }
 
   bool _hasNextPage(MessageState state) =>

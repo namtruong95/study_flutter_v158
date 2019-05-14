@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 import 'message_model.dart';
 
@@ -23,16 +24,25 @@ class MessageLoaded extends MessageState {
   MessageLoaded({
     this.messages,
     this.hasReachedMax,
-  }) : super([messages, hasReachedMax]);
+  }) : super([
+          messages,
+          hasReachedMax,
+        ]);
 
   MessageLoaded copyWith({
     List<MessageModel> messages,
     bool hasReachedMax,
   }) {
     return MessageLoaded(
-      messages: messages ?? this.messages,
-      hasReachedMax: hasReachedMax ?? this.hasReachedMax,
-    );
+        messages: messages ?? this.messages,
+        hasReachedMax: hasReachedMax ?? this.hasReachedMax);
+  }
+
+  MessageLoaded addMessage({@required MessageModel message}) {
+    this.messages.insert(0, message);
+
+    return MessageLoaded(
+        messages: this.messages, hasReachedMax: this.hasReachedMax);
   }
 
   @override

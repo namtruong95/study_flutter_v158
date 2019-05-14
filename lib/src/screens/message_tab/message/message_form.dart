@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:study_flutter_v158/src/components/message/message.dart';
+import 'package:study_flutter_v158/src/components/message/message_model.dart';
 
 class MessageForm extends StatefulWidget {
   @override
@@ -11,6 +14,8 @@ class _MessageFormState extends State<MessageForm> {
 
   @override
   Widget build(BuildContext context) {
+    final _messageBloc = BlocProvider.of(context);
+
     return Container(
       child: Row(
         children: <Widget>[
@@ -57,7 +62,14 @@ class _MessageFormState extends State<MessageForm> {
               child: IconButton(
                 icon: Icon(Icons.send),
                 onPressed: () {
-                  print(this.message.text);
+                  final message = MessageModel(
+                      id: 9999,
+                      message: this.message.text,
+                      isCurrentUser: false,
+                      time: '11:11');
+                  _messageBloc.dispatch(AddMessage(message: message));
+
+                  this.message.clear();
                 },
                 color: Color(0xff203152),
               ),
