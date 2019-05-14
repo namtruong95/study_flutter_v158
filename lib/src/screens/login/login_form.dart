@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:study_flutter_v158/src/components/auth/auth.dart';
 import 'package:study_flutter_v158/src/components/login/login.dart';
 import 'package:study_flutter_v158/src/shared/widgets/button_loading.dart';
 
 class LoginForm extends StatefulWidget {
-  final LoginBloc loginBloc;
-  final AuthBloc authBloc;
-
   LoginForm({
     Key key,
-    @required this.loginBloc,
-    @required this.authBloc,
   }) : super(key: key);
 
   @override
@@ -23,11 +17,24 @@ class _LoginFormState extends State<LoginForm> {
   final _usernameController =
       TextEditingController(text: 'kakaka.biz@gmail.com');
   final _passwordController = TextEditingController(text: 'Abcd@1234');
+  LoginBloc _loginBloc;
 
-  LoginBloc get _loginBloc => widget.loginBloc;
+  @override
+  void initState() {
+    _loginBloc = LoginBloc();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _loginBloc.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final _authBloc = BlocProvider.of(context);
+
     return BlocBuilder<LoginEvent, LoginState>(
       bloc: _loginBloc,
       builder: (
@@ -76,7 +83,12 @@ class _LoginFormState extends State<LoginForm> {
               padding: EdgeInsets.all(8.0),
               child: ButtonLoading(
                 text: 'Login',
-                onPressed: _onLoginButtonPressed,
+                onPressed: () {
+                  _loginBloc.dispatch(LoginButtonPressed(
+                      email: _usernameController.text,
+                      password: _passwordController.text,
+                      authBloc: _authBloc));
+                },
                 isLoading: state is LoginLoading,
                 isSuccess: state is LoginSuccess,
               ),
@@ -91,12 +103,5 @@ class _LoginFormState extends State<LoginForm> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       callback();
     });
-  }
-
-  _onLoginButtonPressed() {
-    _loginBloc.dispatch(LoginButtonPressed(
-      email: _usernameController.text,
-      password: _passwordController.text,
-    ));
   }
 }

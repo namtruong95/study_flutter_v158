@@ -15,11 +15,13 @@ class LayoutAppBar extends StatelessWidget {
     ),
   ];
 
-  LayoutAppBar({@required this.title});
+  LayoutAppBar({
+    @required this.title,
+  }) : assert(title != null);
 
   @override
   Widget build(BuildContext context) {
-    final AuthBloc authBloc = BlocProvider.of<AuthBloc>(context);
+    final _authBloc = BlocProvider.of(context);
 
     return AppBar(
       elevation: 0.0,
@@ -37,7 +39,8 @@ class LayoutAppBar extends StatelessWidget {
           onSelected: (MenuItem menuItem) {
             switch (menuItem.id) {
               case MenuConstant.Logout:
-                authBloc.dispatch(LoggedOut());
+                _authBloc.dispatch(LoggedOut());
+
                 break;
             }
           },
