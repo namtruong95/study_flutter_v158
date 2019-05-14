@@ -53,24 +53,24 @@ class _HomeWidgetState extends State<HomeWidget> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.message),
             title: Text('Messages'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(Icons.contacts),
             title: Text('Contacts'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.group),
             title: Text('Groups'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            title: Text('Contacts'),
+            icon: Icon(Icons.timeline),
+            title: Text('Timeline'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('Groups'),
+            icon: Icon(Icons.more),
+            title: Text('More'),
           ),
         ],
         currentIndex: _selectedIndex,
