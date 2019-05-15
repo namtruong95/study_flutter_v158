@@ -43,8 +43,10 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
 
     if (event is AddMessage) {
       if (currentState is MessageLoaded) {
-        yield (currentState as MessageLoaded)
-            .addMessage(message: event.message);
+        yield MessageLoaded(
+            messages:
+                [event.message] + (currentState as MessageLoaded).messages,
+            hasReachedMax: (currentState as MessageLoaded).hasReachedMax);
       }
       return;
     }

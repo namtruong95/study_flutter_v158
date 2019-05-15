@@ -32,25 +32,27 @@ class _ChannelDetailState extends State<ChannelDetail> {
           bloc: _messageBloc,
         )
       ],
-      child: BlocBuilder(
+      child: BlocBuilder<MessageEvent, MessageState>(
         bloc: _messageBloc,
-        builder: (BuildContext context, MessageState state) => Scaffold(
-            appBar: AppBar(
-              title: Text(this.widget.channel.name),
-            ),
-            body: Container(
-              decoration:
-                  BoxDecoration(color: Color.fromRGBO(196, 207, 208, 0.41)),
-              child: Column(
-                children: <Widget>[
-                  Flexible(
-                    flex: 1,
-                    child: MessageList(channel: this.widget.channel),
-                  ),
-                  MessageForm()
-                ],
+        builder: (BuildContext context, MessageState state) {
+          return Scaffold(
+              appBar: AppBar(
+                title: Text(this.widget.channel.name),
               ),
-            )),
+              body: Container(
+                decoration:
+                    BoxDecoration(color: Color.fromRGBO(196, 207, 208, 0.41)),
+                child: Column(
+                  children: <Widget>[
+                    Flexible(
+                      flex: 1,
+                      child: MessageList(channel: this.widget.channel),
+                    ),
+                    MessageForm()
+                  ],
+                ),
+              ));
+        },
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_flutter_v158/src/components/auth/auth.dart';
-import 'package:study_flutter_v158/src/constants/menu_constant.dart';
+import 'package:study_flutter_v158/src/constants/menu_header.dart';
 import 'menu_item.model.dart';
 
 class LayoutAppBar extends StatelessWidget {
@@ -9,8 +9,8 @@ class LayoutAppBar extends StatelessWidget {
 
   final List<MenuItem> menus = [
     MenuItem(
-      id: MenuConstant.Logout,
-      title: 'Logout',
+      id: MenuHeader.LOGOUT,
+      title: MenuHeader.LOGOUT,
       icon: Icons.lock_open,
     ),
   ];
@@ -38,7 +38,7 @@ class LayoutAppBar extends StatelessWidget {
         PopupMenuButton(
           onSelected: (MenuItem menuItem) {
             switch (menuItem.id) {
-              case MenuConstant.Logout:
+              case MenuHeader.LOGOUT:
                 _authBloc.dispatch(LoggedOut());
 
                 break;

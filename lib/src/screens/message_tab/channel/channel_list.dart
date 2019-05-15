@@ -78,7 +78,7 @@ class _ChannelListState extends State<ChannelList> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
+    return BlocBuilder<ChannelEvent, ChannelState>(
       bloc: this._channelBloc,
       builder: (BuildContext context, ChannelState state) {
         return this._buildState(state);

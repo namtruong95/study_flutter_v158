@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_flutter_v158/src/components/message/message.dart';
 import 'package:study_flutter_v158/src/components/message/message_model.dart';
@@ -62,11 +63,16 @@ class _MessageFormState extends State<MessageForm> {
               child: IconButton(
                 icon: Icon(Icons.send),
                 onPressed: () {
+                  if (this.message.text.length == 0) {
+                    return;
+                  }
+
                   final message = MessageModel(
-                      id: 9999,
-                      message: this.message.text,
-                      isCurrentUser: false,
-                      time: '11:11');
+                    id: 9999,
+                    message: this.message.text,
+                    isCurrentUser: true,
+                    time: DateFormat('HH:mm').format(DateTime.now()),
+                  );
                   _messageBloc.dispatch(AddMessage(message: message));
 
                   this.message.clear();

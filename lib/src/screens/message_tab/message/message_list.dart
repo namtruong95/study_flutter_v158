@@ -21,13 +21,24 @@ class _MessageListState extends State<MessageList> {
 
   dynamic _messageBloc;
 
-  _MessageListState() {
+  @override
+  void initState() {
     this._scrollController.addListener(_onScroll);
+    super.initState();
   }
 
   @override
-  void initState() {
-    super.initState();
+  void dispose() {
+    this._scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.position.pixels;
+    if (maxScroll - currentScroll <= _scrollThreshold) {
+      this._messageBloc.dispatch(FetchMessage());
+    }
   }
 
   Widget _buildState(MessageState state) {
@@ -73,18 +84,10 @@ class _MessageListState extends State<MessageList> {
     return null;
   }
 
-  void _onScroll() {
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.position.pixels;
-    if (maxScroll - currentScroll <= _scrollThreshold) {
-      this._messageBloc.dispatch(FetchMessage());
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     this._messageBloc = BlocProvider.of(context);
 
-    return this._buildState((_messageBloc as MessageBloc).currentState);
+    return this._buildState((this._messageBloc as MessageBloc).currentState);
   }
 }
