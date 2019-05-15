@@ -4,85 +4,54 @@ import 'package:study_flutter_v158/src/components/channel/channel.dart';
 import 'package:study_flutter_v158/src/screens/message_tab/channel/channel_item.dart';
 import 'package:study_flutter_v158/src/shared/widgets/bottom_loader.dart';
 
-class ChannelList extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _ChannelListState();
-}
-
-class _ChannelListState extends State<ChannelList> {
-  final _scrollController = ScrollController();
-  final _scrollThreshold = 200.0;
-
-  ChannelBloc _channelBloc;
-
-  _ChannelListState() {
-    this._scrollController.addListener(_onScroll);
-  }
-  @override
-  void initState() {
-    this._channelBloc = ChannelBloc();
-    this._channelBloc.dispatch(FetchChannel());
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    this._channelBloc.dispose();
-    super.dispose();
-  }
-
-  Widget _buildState(ChannelState state) {
+class ChannelList extends StatelessWidget {
+  Widget _buildContent(ChannelState state, int index) {
     if (state is ChannelUninitialized) {
-      return Center(
-        child: CircularProgressIndicator(),
-      );
+      return CircularProgressIndicator();
     }
 
     if (state is ChannelError) {
-      return Center(
-        child: Text('failed to fetch channels'),
-      );
+      return Text('failed to fetch channels');
     }
 
     if (state is ChannelLoaded) {
       if (state.channels.isEmpty) {
-        return Center(
-          child: Text('no channel'),
-        );
+        return Text('no channel');
       }
-      return ListView.builder(
-        itemBuilder: (BuildContext context, int index) {
-          return index >= state.channels.length
-              ? BottomLoader()
-              : ChannelItem(
-                  channel: state.channels[index],
-                );
-        },
-        itemCount: state.hasReachedMax
-            ? state.channels.length
-            : state.channels.length + 1,
-        controller: _scrollController,
-      );
+
+      return index >= state.channels.length
+          ? BottomLoader()
+          : ChannelItem(
+              channel: state.channels[index],
+            );
     }
 
     return null;
   }
 
-  void _onScroll() {
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.position.pixels;
-    if (maxScroll - currentScroll <= _scrollThreshold) {
-      this._channelBloc.dispatch(FetchChannel());
-    }
+  Widget _buildState(ChannelState state) {
+    return SliverFixedExtentList(
+      itemExtent: 70,
+      delegate: SliverChildBuilderDelegate(
+        (BuildContext context, int index) {
+          return Container(
+            alignment: Alignment.center,
+            child: this._buildContent(state, index),
+          );
+        },
+        childCount: (state is ChannelLoaded)
+            ? state.hasReachedMax
+                ? state.channels.length
+                : state.channels.length + 1
+            : 1,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ChannelEvent, ChannelState>(
-      bloc: this._channelBloc,
-      builder: (BuildContext context, ChannelState state) {
-        return this._buildState(state);
-      },
-    );
+    final _channelBloc = BlocProvider.of(context);
+
+    return this._buildState(_channelBloc.currentState);
   }
 }
