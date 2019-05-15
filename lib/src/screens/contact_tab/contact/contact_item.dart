@@ -22,7 +22,7 @@ class ContactItem extends StatelessWidget {
       leading: ImageCached(
         width: 50,
         height: 50,
-        url: this.contact.imagePath,
+        url: this.contact.imagePath ?? '',
       ),
       title: Text(this.contact.name),
     );

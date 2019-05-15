@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:study_flutter_v158/src/components/contact/contact_bloc.dart';
 import 'package:study_flutter_v158/src/screens/home/home_widget.dart';
 import 'package:study_flutter_v158/src/screens/notification/notification_page.dart';
 
@@ -16,17 +17,22 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   AuthBloc _authBloc;
+  ContactBloc _contactBloc;
 
   @override
   void initState() {
     _authBloc = AuthBloc();
     _authBloc.dispatch(AppStarted());
+
+    _contactBloc = ContactBloc();
+
     super.initState();
   }
 
   @override
   void dispose() {
     _authBloc.dispose();
+    _contactBloc.dispose();
     super.dispose();
   }
 
@@ -53,6 +59,9 @@ class _AppState extends State<App> {
       blocProviders: [
         BlocProvider(
           bloc: _authBloc,
+        ),
+        BlocProvider(
+          bloc: _contactBloc,
         )
       ],
       child: MaterialApp(

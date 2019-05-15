@@ -15,19 +15,16 @@ class _ContactPageState extends State<ContactPage> {
   final _scrollController = ScrollController();
   final _scrollThreshold = 200.0;
 
-  ContactBloc _contactBloc;
+  dynamic _contactBloc;
 
   @override
   void initState() {
     this._scrollController.addListener(_onScroll);
-    _contactBloc = ContactBloc();
-    _contactBloc.dispatch(FetchContact());
     super.initState();
   }
 
   @override
   void dispose() {
-    _contactBloc.dispose();
     _scrollController.dispose();
     super.dispose();
   }
@@ -42,25 +39,21 @@ class _ContactPageState extends State<ContactPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProviderTree(
-      blocProviders: [
-        BlocProvider(
-          bloc: _contactBloc,
-        ),
-      ],
-      child: BlocBuilder(
-        bloc: _contactBloc,
-        builder: (BuildContext context, ContactState state) {
-          return CustomScrollView(
-            slivers: <Widget>[
-              ContactAppBar(),
-              ContactButtonCreate(),
-              ContactList(),
-            ],
-            controller: _scrollController,
-          );
-        },
-      ),
+    this._contactBloc = BlocProvider.of(context);
+    (this._contactBloc as ContactBloc).dispatch(FetchContact());
+
+    return BlocBuilder(
+      bloc: _contactBloc,
+      builder: (BuildContext context, ContactState state) {
+        return CustomScrollView(
+          slivers: <Widget>[
+            ContactAppBar(),
+            ContactButtonCreate(),
+            ContactList(),
+          ],
+          controller: _scrollController,
+        );
+      },
     );
   }
 }
