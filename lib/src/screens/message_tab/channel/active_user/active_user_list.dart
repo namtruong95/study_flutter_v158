@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_flutter_v158/src/components/active_user/active_user.dart';
-import 'package:study_flutter_v158/src/shared/widgets/loading_indicator.dart';
 
 import 'active_user_item.dart';
 

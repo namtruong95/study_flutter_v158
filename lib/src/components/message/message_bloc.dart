@@ -39,6 +39,8 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
       } catch (e) {
         yield MessageError();
       }
+
+      return;
     }
 
     if (event is AddMessage) {
