@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_flutter_v158/src/components/contact/contact.dart';
 
+import 'contact/contact_button_create.dart';
 import 'contact/contact_list.dart';
 import 'contact_app_bar.dart';
 
@@ -53,6 +54,7 @@ class _ContactPageState extends State<ContactPage> {
           return CustomScrollView(
             slivers: <Widget>[
               ContactAppBar(),
+              ContactButtonCreate(),
               ContactList(),
             ],
             controller: _scrollController,
