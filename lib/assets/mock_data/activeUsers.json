@@ -2,62 +2,62 @@
   "data": [
     {
       "id": 1,
-      "name": "channel 1",
+      "name": "user name 1",
       "image_path": "https://picsum.photos/250?image=9"
     },
     {
       "id": 2,
-      "name": "channel 2",
+      "name": "user name 2",
       "image_path": "https://picsum.photos/250?image=9"
     },
     {
       "id": 3,
-      "name": "channel 3",
+      "name": "user name 3",
       "image_path": "https://picsum.photos/250?image=9"
     },
     {
       "id": 4,
-      "name": "channel 4",
+      "name": "user name 4",
       "image_path": "https://picsum.photos/250?image=9"
     },
     {
       "id": 5,
-      "name": "channel 5",
+      "name": "user name 5",
       "image_path": "https://picsum.photos/250?image=9"
     },
     {
       "id": 6,
-      "name": "channel 6",
+      "name": "user name 6",
       "image_path": "https://picsum.photos/250?image=9"
     },
     {
       "id": 7,
-      "name": "channel 7",
+      "name": "user name 7",
       "image_path": "https://picsum.photos/250?image=9"
     },
     {
       "id": 8,
-      "name": "channel 8",
+      "name": "user name 8",
       "image_path": "https://picsum.photos/250?image=9"
     },
     {
       "id": 9,
-      "name": "channel 9",
+      "name": "user name 9",
       "image_path": "https://picsum.photos/250?image=9"
     },
     {
       "id": 10,
-      "name": "channel 10",
+      "name": "user name 10",
       "image_path": "https://picsum.photos/250?image=9"
     },
     {
       "id": 11,
-      "name": "channel 11",
+      "name": "user name 11",
       "image_path": "https://picsum.photos/250?image=9"
     },
     {
       "id": 12,
-      "name": "channel 12",
+      "name": "user name 12",
       "image_path": "https://picsum.photos/250?image=9"
     }
   ]

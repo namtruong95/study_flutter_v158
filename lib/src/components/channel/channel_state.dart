@@ -37,5 +37,5 @@ class ChannelLoaded extends ChannelState {
 
   @override
   String toString() =>
-      'PostLoaded { posts: ${channels.length}, hasReachedMax: $hasReachedMax }';
+      'ChannelLoaded { posts: ${channels.length}, hasReachedMax: $hasReachedMax }';
 }

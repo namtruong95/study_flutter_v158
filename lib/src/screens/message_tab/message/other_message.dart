@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study_flutter_v158/src/components/message/message_model.dart';
+import 'package:study_flutter_v158/src/shared/widgets/image_cached.dart';
 
 class OtherMessage extends StatelessWidget {
   final MessageModel message;
@@ -9,10 +10,10 @@ class OtherMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(
-        child: Text(
-          this.message.id.toString(),
-        ),
+      leading: ImageCached(
+        url: this.message.userImagePath,
+        width: 50,
+        height: 50,
       ),
       title: Container(
           padding: EdgeInsets.all(15.0),

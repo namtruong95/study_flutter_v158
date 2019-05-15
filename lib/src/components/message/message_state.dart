@@ -39,5 +39,5 @@ class MessageLoaded extends MessageState {
 
   @override
   String toString() =>
-      'PostLoaded { posts: ${this.messages.length}, hasReachedMax: $hasReachedMax }';
+      'MessageLoaded { posts: ${this.messages.length}, hasReachedMax: $hasReachedMax }';
 }

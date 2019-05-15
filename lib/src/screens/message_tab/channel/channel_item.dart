@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:study_flutter_v158/src/components/channel/channel_model.dart';
 import 'package:study_flutter_v158/src/screens/message_tab/message/channel_detail.dart';
+import 'package:study_flutter_v158/src/shared/widgets/image_cached.dart';
 
 class ChannelItem extends StatelessWidget {
   final ChannelModel channel;
@@ -17,10 +18,10 @@ class ChannelItem extends StatelessWidget {
           return ChannelDetail(channel: this.channel);
         }));
       },
-      leading: CircleAvatar(
-        child: Text(
-          this.channel.id.toString(),
-        ),
+      leading: ImageCached(
+        width: 50,
+        height: 50,
+        url: this.channel.imagePath,
       ),
       title: Text(this.channel.name),
       subtitle: Text(this.channel.imagePath),
