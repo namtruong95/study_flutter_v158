@@ -4,7 +4,6 @@ import 'package:study_flutter_v158/src/components/channel/channel.dart';
 import 'package:study_flutter_v158/src/screens/message_tab/channel/channel_list.dart';
 
 import 'active_user/active_user_list.dart';
-import 'channel_page_app_bar.dart';
 
 class ChannelPage extends StatefulWidget {
   @override
@@ -47,7 +46,6 @@ class _ChannelPageState extends State<ChannelPage> {
       builder: (BuildContext context, ChannelState state) {
         return CustomScrollView(
           slivers: <Widget>[
-            ChannelPageAppBar(),
             ActiveUserList(),
             ChannelList(),
           ],

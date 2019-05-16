@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study_flutter_v158/src/constants/tab.dart';
-import 'package:study_flutter_v158/src/screens/contact_tab/contact_page.dart';
+import 'package:study_flutter_v158/src/screens/contact_tab/contact_tab.dart';
 import 'package:study_flutter_v158/src/screens/extend_tab/extend_page.dart';
 import 'package:study_flutter_v158/src/screens/group_tab/group_page.dart';
 import 'package:study_flutter_v158/src/screens/layouts/app_bar/app_bar.dart';
@@ -19,18 +19,10 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   static List<Widget> _widgetsContent = <Widget>[
     MessageTab(),
-    ContactPage(),
+    ContactTab(),
     GroupPage(),
     TimelinePage(),
     ExtendPage(),
-  ];
-
-  static const List<String> _titles = <String>[
-    'Messages',
-    'Contacts',
-    'Groups',
-    'Timeline',
-    'More',
   ];
 
   void _onItemTapped(int index) {
@@ -45,7 +37,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: LayoutAppBar(
-          title: _titles[this._selectedTab],
+          title: tabsTitle[this._selectedTab],
           selectedTab: this._selectedTab,
         ),
       ),

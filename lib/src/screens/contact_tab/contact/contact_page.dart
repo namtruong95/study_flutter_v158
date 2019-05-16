@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_flutter_v158/src/components/contact/contact.dart';
 
-import 'contact/contact_button_create.dart';
-import 'contact/contact_list.dart';
-import 'contact_app_bar.dart';
+import 'contact_button_create.dart';
+import 'contact_list.dart';
 
 class ContactPage extends StatefulWidget {
   @override
@@ -47,7 +46,6 @@ class _ContactPageState extends State<ContactPage> {
       builder: (BuildContext context, ContactState state) {
         return CustomScrollView(
           slivers: <Widget>[
-            ContactAppBar(),
             ContactButtonCreate(),
             ContactList(),
           ],
