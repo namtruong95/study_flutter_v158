@@ -19,7 +19,7 @@ class _MessageListState extends State<MessageList> {
   final _scrollController = ScrollController();
   final _scrollThreshold = 200.0;
 
-  dynamic _messageBloc;
+  MessageBloc _messageBloc;
 
   @override
   void initState() {
@@ -86,8 +86,8 @@ class _MessageListState extends State<MessageList> {
 
   @override
   Widget build(BuildContext context) {
-    this._messageBloc = BlocProvider.of(context);
+    this._messageBloc = BlocProvider.of<MessageBloc>(context);
 
-    return this._buildState((this._messageBloc as MessageBloc).currentState);
+    return this._buildState(this._messageBloc.currentState);
   }
 }

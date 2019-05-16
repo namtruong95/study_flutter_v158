@@ -20,16 +20,12 @@ class _ChannelPageState extends State<ChannelPage> {
   @override
   void initState() {
     this._scrollController.addListener(_onScroll);
-    this._channelBloc = ChannelBloc();
-    this._channelBloc.dispatch(FetchChannel());
-
     super.initState();
   }
 
   @override
   void dispose() {
     this._scrollController.dispose();
-    this._channelBloc.dispose();
     super.dispose();
   }
 
@@ -43,25 +39,21 @@ class _ChannelPageState extends State<ChannelPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProviderTree(
-      blocProviders: [
-        BlocProvider(
-          bloc: this._channelBloc,
-        )
-      ],
-      child: BlocBuilder<ChannelEvent, ChannelState>(
-        bloc: this._channelBloc,
-        builder: (BuildContext context, ChannelState state) {
-          return CustomScrollView(
-            slivers: <Widget>[
-              ChannelPageAppBar(),
-              ActiveUserList(),
-              ChannelList(),
-            ],
-            controller: this._scrollController,
-          );
-        },
-      ),
+    this._channelBloc = BlocProvider.of<ChannelBloc>(context);
+    this._channelBloc.dispatch(FetchChannel());
+
+    return BlocBuilder<ChannelEvent, ChannelState>(
+      bloc: this._channelBloc,
+      builder: (BuildContext context, ChannelState state) {
+        return CustomScrollView(
+          slivers: <Widget>[
+            ChannelPageAppBar(),
+            ActiveUserList(),
+            ChannelList(),
+          ],
+          controller: this._scrollController,
+        );
+      },
     );
   }
 }

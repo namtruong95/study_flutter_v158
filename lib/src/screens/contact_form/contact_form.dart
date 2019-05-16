@@ -17,7 +17,7 @@ class _ContactFormState extends State<ContactForm> {
   final _usernameController = TextEditingController(text: 'name 1');
   final _phoneController = TextEditingController(text: '0909666666');
 
-  dynamic _contactBloc;
+  ContactBloc _contactBloc;
 
   void _saveContact() {
     setState(() {
@@ -31,9 +31,9 @@ class _ContactFormState extends State<ContactForm> {
         imagePath: 'https://picsum.photos/250?image=9',
       );
 
-      (this._contactBloc as ContactBloc).dispatch(
-        AddContact(contact: contact),
-      );
+      this._contactBloc.dispatch(
+            AddContact(contact: contact),
+          );
       Navigator.pop(context);
 
       Scaffold.of(context).showSnackBar(
@@ -46,7 +46,7 @@ class _ContactFormState extends State<ContactForm> {
 
   @override
   Widget build(BuildContext context) {
-    this._contactBloc = BlocProvider.of(context);
+    this._contactBloc = BlocProvider.of<ContactBloc>(context);
 
     return Container(
       padding: EdgeInsets.all(10),

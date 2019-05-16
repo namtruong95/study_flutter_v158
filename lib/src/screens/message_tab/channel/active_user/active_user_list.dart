@@ -19,9 +19,13 @@ class _ActiveUserListState extends State<ActiveUserList> {
   void initState() {
     this._scrollController.addListener(_onScroll);
 
-    _activeUserBloc = ActiveUserBloc();
-    _activeUserBloc.dispatch(FetchActiveUser());
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    this._scrollController.dispose();
+    super.dispose();
   }
 
   void _onScroll() {
@@ -31,13 +35,6 @@ class _ActiveUserListState extends State<ActiveUserList> {
     if (maxScroll - currentScroll <= _scrollThreshold) {
       this._activeUserBloc.dispatch(FetchActiveUser());
     }
-  }
-
-  @override
-  void dispose() {
-    this._scrollController.dispose();
-    _activeUserBloc.dispose();
-    super.dispose();
   }
 
   Widget _buildActiveUserWidget(ActiveUserState state) {
@@ -74,6 +71,9 @@ class _ActiveUserListState extends State<ActiveUserList> {
 
   @override
   Widget build(BuildContext context) {
+    _activeUserBloc = BlocProvider.of<ActiveUserBloc>(context);
+    _activeUserBloc.dispatch(FetchActiveUser());
+
     return BlocBuilder(
       bloc: _activeUserBloc,
       builder: (BuildContext context, ActiveUserState state) {

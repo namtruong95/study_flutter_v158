@@ -50,7 +50,7 @@ class ContactList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _blocContact = BlocProvider.of(context);
+    final _blocContact = BlocProvider.of<ContactBloc>(context);
     return this._buildState(_blocContact.currentState);
   }
 }

@@ -15,7 +15,7 @@ class _MessageFormState extends State<MessageForm> {
 
   @override
   Widget build(BuildContext context) {
-    final _messageBloc = BlocProvider.of(context);
+    final _messageBloc = BlocProvider.of<MessageBloc>(context);
 
     return Container(
       child: Row(

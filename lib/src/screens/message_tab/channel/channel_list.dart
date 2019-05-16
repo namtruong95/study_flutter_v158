@@ -50,7 +50,7 @@ class ChannelList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _channelBloc = BlocProvider.of(context);
+    final _channelBloc = BlocProvider.of<ChannelBloc>(context);
 
     return this._buildState(_channelBloc.currentState);
   }

@@ -15,7 +15,7 @@ class _ContactPageState extends State<ContactPage> {
   final _scrollController = ScrollController();
   final _scrollThreshold = 200.0;
 
-  dynamic _contactBloc;
+  ContactBloc _contactBloc;
 
   @override
   void initState() {
@@ -39,8 +39,8 @@ class _ContactPageState extends State<ContactPage> {
 
   @override
   Widget build(BuildContext context) {
-    this._contactBloc = BlocProvider.of(context);
-    (this._contactBloc as ContactBloc).dispatch(FetchContact());
+    this._contactBloc = BlocProvider.of<ContactBloc>(context);
+    this._contactBloc.dispatch(FetchContact());
 
     return BlocBuilder(
       bloc: _contactBloc,

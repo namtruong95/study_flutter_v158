@@ -28,7 +28,7 @@ class _ChannelDetailState extends State<ChannelDetail> {
   Widget build(BuildContext context) {
     return BlocProviderTree(
       blocProviders: [
-        BlocProvider(
+        BlocProvider<MessageBloc>(
           bloc: _messageBloc,
         )
       ],

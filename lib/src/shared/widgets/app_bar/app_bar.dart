@@ -21,7 +21,7 @@ class LayoutAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _authBloc = BlocProvider.of(context);
+    final _authBloc = BlocProvider.of<AuthBloc>(context);
 
     return AppBar(
       elevation: 0.0,

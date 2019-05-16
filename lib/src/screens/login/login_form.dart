@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:study_flutter_v158/src/components/auth/auth.dart';
 
 import 'package:study_flutter_v158/src/components/login/login.dart';
 import 'package:study_flutter_v158/src/shared/widgets/button_loading.dart';
@@ -33,7 +34,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    final _authBloc = BlocProvider.of(context);
+    final _authBloc = BlocProvider.of<AuthBloc>(context);
 
     return BlocBuilder<LoginEvent, LoginState>(
       bloc: _loginBloc,
