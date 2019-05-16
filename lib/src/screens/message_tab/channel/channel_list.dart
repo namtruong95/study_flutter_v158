@@ -7,16 +7,22 @@ import 'package:study_flutter_v158/src/shared/widgets/bottom_loader.dart';
 class ChannelList extends StatelessWidget {
   Widget _buildContent(ChannelState state, int index) {
     if (state is ChannelUninitialized) {
-      return CircularProgressIndicator();
+      return Center(
+        child: CircularProgressIndicator(),
+      );
     }
 
     if (state is ChannelError) {
-      return Text('failed to fetch channels');
+      return Center(
+        child: Text('failed to fetch data'),
+      );
     }
 
     if (state is ChannelLoaded) {
       if (state.channels.isEmpty) {
-        return Text('no channel');
+        return Center(
+          child: Text('data is empty'),
+        );
       }
 
       return index >= state.channels.length
@@ -26,7 +32,7 @@ class ChannelList extends StatelessWidget {
             );
     }
 
-    return null;
+    return Container();
   }
 
   Widget _buildState(ChannelState state) {

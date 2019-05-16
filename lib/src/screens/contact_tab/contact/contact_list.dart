@@ -7,26 +7,30 @@ import 'package:study_flutter_v158/src/shared/widgets/bottom_loader.dart';
 class ContactList extends StatelessWidget {
   Widget _buildContent(ContactState state, int index) {
     if (state is ContactUninitialized) {
-      return CircularProgressIndicator();
+      return Center(
+        child: CircularProgressIndicator(),
+      );
     }
 
     if (state is ContactError) {
-      return Text('failed to fetch contacts');
+      return Center(
+        child: Text('failed to fetch data'),
+      );
     }
 
     if (state is ContactLoaded) {
       if (state.contacts.isEmpty) {
-        return Text('no contact');
+        return Center(
+          child: Text('no data'),
+        );
       }
 
       return index >= state.contacts.length
           ? BottomLoader()
-          : ContactItem(
-              contact: state.contacts[index],
-            );
+          : ContactItem(contact: state.contacts[index]);
     }
 
-    return null;
+    return Container();
   }
 
   Widget _buildState(ContactState state) {

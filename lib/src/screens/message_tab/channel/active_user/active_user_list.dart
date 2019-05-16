@@ -39,35 +39,51 @@ class _ActiveUserListState extends State<ActiveUserList> {
   }
 
   Widget _buildActiveUserWidget(ActiveUserState state) {
-    if (state is ActiveUserLoaded) {
-      if (state.activeUsers.isNotEmpty) {
-        return ListView.builder(
-          itemBuilder: (BuildContext context, int index) {
-            return (!state.hasReachedMax && index >= state.activeUsers.length)
-                ? Container(
-                    padding: EdgeInsets.all(10),
-                    child: Stack(
-                      children: <Widget>[
-                        CircularProgressIndicator(
-                          strokeWidth: 1,
-                        )
-                      ],
-                    ),
-                  )
-                : UserActiveItem(
-                    activeUser: state.activeUsers[index],
-                  );
-          },
-          scrollDirection: Axis.horizontal,
-          itemCount: state.hasReachedMax
-              ? state.activeUsers.length
-              : state.activeUsers.length + 1,
-          controller: this._scrollController,
-        );
-      }
+    if (state is ActiveUserUninitialized) {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
     }
 
-    return null;
+    if (state is ActiveUserError) {
+      return Center(
+        child: Text('failed to fetch data'),
+      );
+    }
+
+    if (state is ActiveUserLoaded) {
+      if (state.activeUsers.isEmpty) {
+        return Center(
+          child: Text('data not found'),
+        );
+      }
+
+      return ListView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          return (!state.hasReachedMax && index >= state.activeUsers.length)
+              ? Container(
+                  padding: EdgeInsets.all(10),
+                  child: Stack(
+                    children: <Widget>[
+                      CircularProgressIndicator(
+                        strokeWidth: 1,
+                      )
+                    ],
+                  ),
+                )
+              : UserActiveItem(
+                  activeUser: state.activeUsers[index],
+                );
+        },
+        scrollDirection: Axis.horizontal,
+        itemCount: state.hasReachedMax
+            ? state.activeUsers.length
+            : state.activeUsers.length + 1,
+        controller: this._scrollController,
+      );
+    }
+
+    return Container();
   }
 
   @override

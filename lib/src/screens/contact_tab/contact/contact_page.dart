@@ -44,12 +44,20 @@ class _ContactPageState extends State<ContactPage> {
     return BlocBuilder(
       bloc: _contactBloc,
       builder: (BuildContext context, ContactState state) {
-        return CustomScrollView(
-          slivers: <Widget>[
-            ContactButtonCreate(),
-            ContactList(),
+        return Stack(
+          children: <Widget>[
+            CustomScrollView(
+              slivers: <Widget>[
+                ContactList(),
+              ],
+              controller: _scrollController,
+            ),
+            Positioned(
+              bottom: 20,
+              right: 20,
+              child: ContactButtonCreate(),
+            )
           ],
-          controller: _scrollController,
         );
       },
     );
