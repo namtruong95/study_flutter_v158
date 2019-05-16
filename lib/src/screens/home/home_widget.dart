@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:study_flutter_v158/src/constants/tab.dart';
 import 'package:study_flutter_v158/src/screens/contact_tab/contact_tab.dart';
-import 'package:study_flutter_v158/src/screens/extend_tab/extend_page.dart';
+import 'package:study_flutter_v158/src/screens/extend_tab/extend_tab.dart';
 import 'package:study_flutter_v158/src/screens/group_tab/group_page.dart';
 import 'package:study_flutter_v158/src/screens/layouts/app_bar/app_bar.dart';
 import 'package:study_flutter_v158/src/screens/message_tab/message_tab.dart';
@@ -15,14 +15,14 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
-  int _selectedTab = tabContact;
+  int _selectedTab = tabExtend;
 
   static List<Widget> _widgetsContent = <Widget>[
     MessageTab(),
     ContactTab(),
     GroupPage(),
     TimelinePage(),
-    ExtendPage(),
+    ExtendTab(),
   ];
 
   void _onItemTapped(int index) {

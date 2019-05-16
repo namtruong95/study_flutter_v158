@@ -19,6 +19,15 @@ class BuildActionAppBar extends StatelessWidget {
             ),
           ],
         );
+      case tabExtend:
+        return Row(
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {},
+            ),
+          ],
+        );
     }
 
     return Container();
