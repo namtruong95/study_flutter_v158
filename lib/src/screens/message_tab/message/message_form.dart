@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_flutter_v158/src/components/message/message.dart';
 import 'package:study_flutter_v158/src/components/message/message_model.dart';
+import 'package:study_flutter_v158/src/constants/colors.dart';
 
 class MessageForm extends StatefulWidget {
   @override
@@ -26,7 +27,7 @@ class _MessageFormState extends State<MessageForm> {
               child: IconButton(
                 icon: Icon(Icons.image),
                 onPressed: () {},
-                color: Color(0xff203152),
+                color: gray_1,
               ),
             ),
             color: Colors.white,
@@ -39,7 +40,7 @@ class _MessageFormState extends State<MessageForm> {
                 onPressed: () {
                   print('get sticker');
                 },
-                color: Color(0xff203152),
+                color: gray_1,
               ),
             ),
             color: Colors.white,
@@ -47,11 +48,12 @@ class _MessageFormState extends State<MessageForm> {
           Flexible(
             child: Container(
               child: TextField(
-                style: TextStyle(color: Color(0xff203152), fontSize: 15.0),
                 controller: this.message,
                 decoration: InputDecoration.collapsed(
                   hintText: 'Type your message...',
-                  hintStyle: TextStyle(color: Color(0xffaeaeae)),
+                  hintStyle: TextStyle(
+                    color: gray_1,
+                  ),
                 ),
                 focusNode: focusNode,
               ),
@@ -77,7 +79,7 @@ class _MessageFormState extends State<MessageForm> {
 
                   this.message.clear();
                 },
-                color: Color(0xff203152),
+                color: gray_1,
               ),
             ),
             color: Colors.white,
@@ -87,8 +89,14 @@ class _MessageFormState extends State<MessageForm> {
       width: double.infinity,
       height: 50.0,
       decoration: BoxDecoration(
-          border: Border(top: BorderSide(color: Color(0xffaeaeae), width: 0.5)),
-          color: Colors.white),
+        border: Border(
+          top: BorderSide(
+            color: pink_1,
+            width: 0.5,
+          ),
+        ),
+        color: Colors.white,
+      ),
     );
   }
 }

@@ -16,12 +16,14 @@ class OtherMessage extends StatelessWidget {
         height: 50,
       ),
       title: Container(
-          padding: EdgeInsets.all(15.0),
-          margin: EdgeInsets.only(right: 50),
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
-          child: Container(
-              child: Column(
+        padding: EdgeInsets.all(15.0),
+        margin: EdgeInsets.only(right: 50),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Container(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
@@ -33,9 +35,11 @@ class OtherMessage extends StatelessWidget {
                   this.message.time,
                   style: TextStyle(fontSize: 12.0, fontStyle: FontStyle.italic),
                 ),
-              )
+              ),
             ],
-          ))),
+          ),
+        ),
+      ),
     );
   }
 }

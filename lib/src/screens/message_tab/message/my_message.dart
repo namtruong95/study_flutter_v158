@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study_flutter_v158/src/components/message/message_model.dart';
+import 'package:study_flutter_v158/src/constants/colors.dart';
 
 class MyMessage extends StatelessWidget {
   final MessageModel message;
@@ -10,13 +11,14 @@ class MyMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Container(
-          padding: EdgeInsets.all(15.0),
-          margin: EdgeInsets.fromLTRB(80, 0, 0, 0),
-          decoration: BoxDecoration(
-              color: Color.fromRGBO(123, 225, 234, 1),
-              borderRadius: BorderRadius.circular(20.0)),
-          child: Container(
-              child: Column(
+        padding: EdgeInsets.all(15.0),
+        margin: EdgeInsets.fromLTRB(80, 0, 0, 0),
+        decoration: BoxDecoration(
+          color: blue_2,
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Container(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
@@ -32,7 +34,9 @@ class MyMessage extends StatelessWidget {
                 margin: EdgeInsets.only(top: 10),
               )
             ],
-          ))),
+          ),
+        ),
+      ),
     );
   }
 }

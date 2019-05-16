@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_flutter_v158/src/components/active_user/active_user.dart';
+import 'package:study_flutter_v158/src/constants/colors.dart';
 
 import 'active_user_item.dart';
 
@@ -93,8 +94,7 @@ class _ActiveUserListState extends State<ActiveUserList> {
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border(
-                          bottom:
-                              BorderSide(color: Color(0xffaeaeae), width: 0.5),
+                          bottom: BorderSide(color: pink_1, width: 0.5),
                         ),
                       ),
                       padding: EdgeInsets.only(bottom: 10, top: 10),

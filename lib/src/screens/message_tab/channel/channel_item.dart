@@ -13,10 +13,11 @@ class ChannelItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (BuildContext context) {
-          return ChannelDetail(channel: this.channel);
-        }));
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (BuildContext context) {
+            return ChannelDetail(channel: this.channel);
+          }),
+        );
       },
       leading: ImageCached(
         width: 50,

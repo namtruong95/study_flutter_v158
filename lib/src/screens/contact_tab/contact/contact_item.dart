@@ -14,10 +14,11 @@ class ContactItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (BuildContext context) {
-          return ContactDetail(contact: this.contact);
-        }));
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (BuildContext context) {
+            return ContactDetail(contact: this.contact);
+          }),
+        );
       },
       leading: ImageCached(
         width: 50,

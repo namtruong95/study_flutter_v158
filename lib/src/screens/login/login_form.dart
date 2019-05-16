@@ -85,10 +85,12 @@ class _LoginFormState extends State<LoginForm> {
               child: ButtonLoading(
                 text: 'Login',
                 onPressed: () {
-                  _loginBloc.dispatch(LoginButtonPressed(
-                      email: _usernameController.text,
-                      password: _passwordController.text,
-                      authBloc: _authBloc));
+                  _loginBloc.dispatch(
+                    LoginButtonPressed(
+                        email: _usernameController.text,
+                        password: _passwordController.text,
+                        authBloc: _authBloc),
+                  );
                 },
                 isLoading: state is LoginLoading,
                 isSuccess: state is LoginSuccess,

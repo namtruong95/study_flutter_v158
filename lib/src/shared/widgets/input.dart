@@ -44,9 +44,10 @@ class _InputState extends State<Input> {
       },
       autovalidate: widget.autovalidate,
       decoration: InputDecoration(
-          labelText: widget.labelText,
-          hintText: widget.hintText,
-          border: OutlineInputBorder()),
+        labelText: widget.labelText,
+        hintText: widget.hintText,
+        border: OutlineInputBorder(),
+      ),
       controller: widget.controller,
     );
   }
