@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:study_flutter_v158/src/components/auth/auth.dart';
 import 'package:study_flutter_v158/src/constants/menu_header.dart';
+import 'package:study_flutter_v158/src/screens/layouts/app_bar/build_action.dart';
 import 'menu_item.model.dart';
 
 class LayoutAppBar extends StatelessWidget {
   final String title;
+  final int selectedTab;
 
   final List<MenuItem> menus = [
     MenuItem(
@@ -17,7 +19,9 @@ class LayoutAppBar extends StatelessWidget {
 
   LayoutAppBar({
     @required this.title,
-  }) : assert(title != null);
+    @required this.selectedTab,
+  })  : assert(title != null),
+        assert(selectedTab != null);
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +29,11 @@ class LayoutAppBar extends StatelessWidget {
 
     return AppBar(
       elevation: 0.0,
-      title: Center(
-        child: Text(title),
-      ),
+      title: Text(title),
       actions: <Widget>[
+        BuildActionAppBar(
+          selectedTab: this.selectedTab,
+        ),
         IconButton(
           icon: Icon(Icons.notifications),
           onPressed: () {

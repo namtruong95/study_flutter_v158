@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:study_flutter_v158/src/constants/tab.dart';
 import 'package:study_flutter_v158/src/screens/contact_tab/contact_page.dart';
 import 'package:study_flutter_v158/src/screens/extend_tab/extend_page.dart';
 import 'package:study_flutter_v158/src/screens/group_tab/group_page.dart';
+import 'package:study_flutter_v158/src/screens/layouts/app_bar/app_bar.dart';
 import 'package:study_flutter_v158/src/screens/message_tab/message_tab.dart';
 import 'package:study_flutter_v158/src/screens/timeline_tab/timeline_page.dart';
-import 'package:study_flutter_v158/src/shared/widgets/app_bar/app_bar.dart';
 
 class HomeWidget extends StatefulWidget {
   HomeWidget({Key key}) : super(key: key);
@@ -14,7 +15,7 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
-  int _selectedIndex = 0;
+  int _selectedTab = tabContact;
 
   static List<Widget> _widgetsContent = <Widget>[
     MessageTab(),
@@ -34,7 +35,7 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      _selectedTab = index;
     });
   }
 
@@ -44,11 +45,12 @@ class _HomeWidgetState extends State<HomeWidget> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: LayoutAppBar(
-          title: _titles[this._selectedIndex],
+          title: _titles[this._selectedTab],
+          selectedTab: this._selectedTab,
         ),
       ),
       body: Center(
-        child: _widgetsContent.elementAt(this._selectedIndex),
+        child: _widgetsContent.elementAt(this._selectedTab),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -73,7 +75,7 @@ class _HomeWidgetState extends State<HomeWidget> {
             title: Text('More'),
           ),
         ],
-        currentIndex: _selectedIndex,
+        currentIndex: _selectedTab,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
