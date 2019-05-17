@@ -5,7 +5,13 @@ class ContactModel {
   String phone;
   String birthday;
 
-  ContactModel({this.id, this.name, this.imagePath, this.phone, this.birthday});
+  ContactModel({
+    this.id,
+    this.name,
+    this.imagePath,
+    this.phone,
+    this.birthday,
+  });
 
   ContactModel.fromMap(Map m) {
     id = m['id'];

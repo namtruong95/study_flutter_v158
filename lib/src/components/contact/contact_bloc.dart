@@ -41,10 +41,9 @@ class ContactBloc extends Bloc<ContactEvent, ContactState> {
 
     if (event is AddContact) {
       if (currentState is ContactLoaded) {
-        yield ContactLoaded(
-            contacts:
-                [event.contact] + (currentState as ContactLoaded).contacts,
-            hasReachedMax: (currentState as ContactLoaded).hasReachedMax);
+        yield (currentState as ContactLoaded).addContact(
+          contact: event.contact,
+        );
       }
       return;
     }

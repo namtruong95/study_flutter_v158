@@ -56,7 +56,7 @@ class _AppState extends State<App> {
       return LoadingIndicator();
     }
 
-    return null;
+    return Container();
   }
 
   @override

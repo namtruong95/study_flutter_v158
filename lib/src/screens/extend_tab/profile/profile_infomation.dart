@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:study_flutter_v158/src/constants/colors.dart';
 
 class ProfileInformation extends StatelessWidget {
+  final String name = 'Nam 123';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +14,7 @@ class ProfileInformation extends StatelessWidget {
             leading: CircleAvatar(
               child: Text('NA'),
             ),
-            title: Text('Nam Truong'),
+            title: Text(name),
             subtitle: Text('My Profile'),
           ),
           Positioned(

@@ -35,6 +35,13 @@ class ContactLoaded extends ContactState {
     );
   }
 
+  ContactLoaded addContact({
+    ContactModel contact,
+  }) {
+    this.contacts.insert(0, contact);
+    return this;
+  }
+
   @override
   String toString() =>
       'ContactLoaded { contacts: ${contacts.length}, hasReachedMax: $hasReachedMax }';
